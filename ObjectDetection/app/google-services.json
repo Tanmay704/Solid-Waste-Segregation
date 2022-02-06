@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "106640419790",
+    "firebase_url": "https://solid-waste-segregation-default-rtdb.firebaseio.com",
+    "project_id": "solid-waste-segregation",
+    "storage_bucket": "solid-waste-segregation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106640419790:android:c059ecf915553540e1d99f",
+        "android_client_info": {
+          "package_name": "org.pytorch.demo.objectdetection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106640419790-b8p4278ta6qclmqgfphgq4c1ctpq58qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvmLQsNDRQCIbeGCC6CZ31jqgkML27U7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106640419790-b8p4278ta6qclmqgfphgq4c1ctpq58qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
