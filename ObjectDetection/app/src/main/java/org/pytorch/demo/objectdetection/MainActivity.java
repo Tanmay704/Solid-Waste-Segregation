@@ -70,8 +70,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     String locality;
     Date c = Calendar.getInstance().getTime();
 
-
-    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+    SimpleDateFormat df = new SimpleDateFormat("MMM-yyyy", Locale.getDefault());
     String formattedDate = df.format(c);
     long getCurrCount1 = 0;
     long getCurrCount2 = 0;
