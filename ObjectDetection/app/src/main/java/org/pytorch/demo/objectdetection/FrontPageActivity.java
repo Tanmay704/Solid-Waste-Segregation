@@ -28,6 +28,7 @@ import java.util.Locale;
 
 public class FrontPageActivity extends AppCompatActivity implements LocationListener{
     public Button button_location;
+    public Button button_analysis;
     TextView textView_location;
     LocationManager locationManager;
 
@@ -37,7 +38,7 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
         setContentView(R.layout.activity_front_page);
 
         button_location = (Button) findViewById(R.id.button_location);
-        textView_location = findViewById(R.id.text_location);
+//        textView_location = findViewById(R.id.text_location);
         //Runtime permissions
         if (ContextCompat.checkSelfPermission(FrontPageActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
@@ -47,19 +48,38 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
         }
 
 
-
         button_location.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
-
                 getLocation();
+
 
 
             }
         });
+
+
+
+
+
+        //analysis button code
+        button_analysis = (Button) findViewById(R.id.button_analysis);
+//        textView_location = findViewById(R.id.text_location);
+
+        button_analysis.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openAnalysisActivity();
+            }
+        });
+
+
     }
 
+    public void openAnalysisActivity(){
+        Intent intent = new Intent(FrontPageActivity.this, NewAnalysisActivity.class);
+        startActivity(intent);
+    }
     @SuppressLint("MissingPermission")
     private void getLocation() {
 

@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
 
                     if (results.get(i).classIndex == 0) {
-                        ++getCurrCount1;
+                         ++getCurrCount1;
                     } else if (results.get(i).classIndex == 1) {
                         getCurrCount2++;
                     } else if (results.get(i).classIndex == 2) {

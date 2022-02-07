@@ -7,22 +7,23 @@
     tools:context=".FrontPageActivity">
 
 
-    <TextView
-        android:id="@+id/text_location"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:text="Current Location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/button_location"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Get Location"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="120dp"
         tools:layout_editor_absoluteY="264dp" />
+
+    <Button
+        android:id="@+id/button_analysis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Analysis"
+        android:layout_marginStart="200dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NewAnalysisActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" >
+
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"

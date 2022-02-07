@@ -22,10 +22,8 @@ public class GarbageLocality {
                 String newDateStr = null;
                 if(snapshot.exists()) {
                     //create new user
-
                    setValue(true);
                 }else {
-
                  //   System.out.println(":::::::::::::::::::::::::::::::::::::::::"+formattedDate);
                     userReference.child("GarbageCount").child(locality).child(formattedDate).child("Cardboard").child("Count").setValue(0);
                     userReference.child("GarbageCount").child(locality).child(formattedDate).child("Glass").child("Count").setValue(0);
