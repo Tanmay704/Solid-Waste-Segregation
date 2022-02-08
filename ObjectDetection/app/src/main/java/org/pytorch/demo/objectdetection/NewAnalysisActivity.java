@@ -45,6 +45,7 @@ public class NewAnalysisActivity extends AppCompatActivity {
                    }
                 }
                 System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+total);
+                System.out.println("ABHI");
             }
 
             @Override
