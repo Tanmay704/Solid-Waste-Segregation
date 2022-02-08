@@ -14,7 +14,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class NewAnalysisActivity extends AppCompatActivity {
-
+    public long total = 0;
+    public NewAnalysisActivity(){
+        getAllCount();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,23 +28,24 @@ public class NewAnalysisActivity extends AppCompatActivity {
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("GarbageCount");
-        ValueEventListener valueEventListener = new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
 
-                String itsme = String.valueOf(Objects.requireNonNull(dataSnapshot1.getValue()));
-    
-                 //     Log.i("child", String.valueOf(itsme));
 
-                int sum = 0;
 
-                for (DataSnapshot ds : dataSnapshot1.getChildren()) {
-                    sum = Integer.parseInt(sum + itsme);
+                total = 0;
+
+                for(DataSnapshot ds : dataSnapshot1.getChildren()) {
+                    for(DataSnapshot ds2 : ds.getChildren()) {
+
+                        Long amount = ds2.child("Plastic").child("Count").getValue(Long.class);
+                            total += amount;
+
+                   }
                 }
-
-
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+total);
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -50,6 +54,6 @@ public class NewAnalysisActivity extends AppCompatActivity {
             }
 
 
-        };
+        });
     }
 }
