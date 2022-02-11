@@ -9,6 +9,7 @@
     android:background="@color/color_white"
     tools:context=".NewAnalysisActivity">
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
@@ -189,7 +190,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="1000dp"
         android:layout_below="@+id/cardViewGraph"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -424,6 +425,19 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@color/color_two" />
+
+            <!--Dropdown-->
+            <Spinner
+                android:id="@+id/spinner_languages"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:text="Dropdown"
+                android:textColor="@color/va"
+                android:layout_marginBottom="338dp"
+                android:spinnerMode="dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </LinearLayout>

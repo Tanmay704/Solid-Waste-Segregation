@@ -6,4 +6,14 @@
     <string name="restart">Restart</string>
     <string name="select">Select</string>
     <string name="live">Live</string>
+
+    <string-array name="Waste">
+        <item>Plastic</item>
+        <item>Paper</item>
+        <item>Metal</item>
+        <item>Glass</item>
+        <item>Cardboard</item>
+        <item>Thermacol</item>
+    </string-array>
+
 </resources>

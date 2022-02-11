@@ -20,6 +20,13 @@ import android.widget.TextView;
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
+// Dropdown
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 public class NewAnalysisActivity extends AppCompatActivity {
     public long plastic_total = 0;
     public long paper_total = 0;
@@ -38,7 +45,7 @@ public class NewAnalysisActivity extends AppCompatActivity {
 
     TextView tvCardboard, tvPaper, tvPlastic, tvMetal,tvThermacol,tvGlass;
     PieChart pieChart;
-
+    Spinner spinnerLanguages;
 
     public NewAnalysisActivity(){
         getAllCount();
@@ -55,6 +62,12 @@ public class NewAnalysisActivity extends AppCompatActivity {
         tvThermacol = findViewById(R.id.tvThermacol);
         tvGlass = findViewById(R.id.tvGlass);
         pieChart = findViewById(R.id.piechart);
+
+        //Dropdown
+        spinnerLanguages=findViewById(R.id.spinner_languages);
+        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.Waste, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinnerLanguages.setAdapter(adapter);
     }
 
     public void getAllCount() {
