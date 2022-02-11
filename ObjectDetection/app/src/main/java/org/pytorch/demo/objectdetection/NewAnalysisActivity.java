@@ -193,4 +193,7 @@ public class NewAnalysisActivity extends AppCompatActivity {
         // To animate the pie chart
         pieChart.startAnimation();
     }
+
 }
+
+
