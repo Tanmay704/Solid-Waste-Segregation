@@ -444,12 +444,12 @@
             <Spinner
                 android:id="@+id/spinner_locations"
                 android:layout_width="match_parent"
-                android:layout_height="86dp"
+                android:layout_height="40dp"
                 android:text="Dropdown"
 
                 android:spinnerMode="dropdown"
                 android:drawSelectorOnTop="true"
-                android:background="@android:color/holo_red_dark"
+                android:background="@color/va"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -460,12 +460,13 @@
     </ScrollView>
 
     </androidx.cardview.widget.CardView>
+
     <Button
+        android:id="@+id/chartbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
-        android:id="@+id/chartbutton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp" />
+        android:layout_marginBottom="137dp"
+        android:text="NEXT" />
 </RelativeLayout>
