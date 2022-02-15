@@ -1,5 +1,6 @@
 package org.pytorch.demo.objectdetection;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
@@ -23,11 +25,15 @@ import org.eazegraph.lib.models.PieModel;
 // Dropdown
 import android.view.View;
 import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class NewAnalysisActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class NewAnalysisActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long plastic_total = 0;
     public long paper_total = 0;
     public long cardboard_total = 0;
@@ -43,18 +49,25 @@ public class NewAnalysisActivity extends AppCompatActivity {
     public long t_total = 0;
     public long g_total = 0;
 
-    TextView tvCardboard, tvPaper, tvPlastic, tvMetal,tvThermacol,tvGlass;
-    PieChart pieChart;
-    Spinner spinnerLanguages;
 
-    public NewAnalysisActivity(){
+    //for drop down
+
+
+    List<String> locations = new ArrayList<String>();
+    TextView tvCardboard, tvPaper, tvPlastic, tvMetal, tvThermacol, tvGlass;
+    PieChart pieChart;
+
+
+    public NewAnalysisActivity() {
         getAllCount();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis_activity);
 
+        //chart
         tvCardboard = findViewById(R.id.tvCardboard);
         tvPaper = findViewById(R.id.tvPaper);
         tvPlastic = findViewById(R.id.tvPlastic);
@@ -63,11 +76,44 @@ public class NewAnalysisActivity extends AppCompatActivity {
         tvGlass = findViewById(R.id.tvGlass);
         pieChart = findViewById(R.id.piechart);
 
-        //Dropdown
-        spinnerLanguages=findViewById(R.id.spinner_languages);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.Waste, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinnerLanguages.setAdapter(adapter);
+        //Dropdown for locations
+        locations.add("All");
+
+        Spinner spineerLocation = (Spinner) findViewById(R.id.spinner_locations);
+        Button button = (Button) findViewById(R.id.chartbutton);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locations);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spineerLocation.setPrompt("Select your favorite Planet!");
+        spineerLocation.setAdapter(adapter);
+
+        spineerLocation.setOnItemSelectedListener(this);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("--------------------"+spineerLocation.getSelectedItem());
+//                Intent intent= new Intent(NewAnalysisActivity.this,SecondActivity.class);
+//                intent.putExtra("data",String.valueOf(spineerLocation.getSelectedItem()));
+//                startActivity(intent);
+            }
+        });
+    }
+    // System.out.println("aloalaolaolaolaolaoalllllllllllllllllllllllll");
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View arg1, int position, long id) {
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" + locations.get(position));
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        Toast.makeText(getApplicationContext(), "please Select location: ", Toast.LENGTH_SHORT).show();
     }
 
     public void getAllCount() {
@@ -84,8 +130,10 @@ public class NewAnalysisActivity extends AppCompatActivity {
                 metal_total = 0;
                 thermocol_total = 0;
                 glass_total = 0;
-                for(DataSnapshot ds : dataSnapshot1.getChildren()) {
-                    for(DataSnapshot ds2 : ds.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot1.getChildren()) {
+
+                    locations.add(ds.getKey().toString());
+                    for (DataSnapshot ds2 : ds.getChildren()) {
 
                         Long amount = ds2.child("Plastic").child("Count").getValue(Long.class);
                         plastic_total += amount;
@@ -102,12 +150,12 @@ public class NewAnalysisActivity extends AppCompatActivity {
 
                     }
                 }
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+cardboard_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+glass_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+metal_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+paper_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+plastic_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+thermocol_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+cardboard_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+glass_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+metal_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+paper_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+plastic_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+thermocol_total);
 
                 //piechart
                 //callpiechart();
@@ -131,8 +179,7 @@ public class NewAnalysisActivity extends AppCompatActivity {
     }
 */
 
-    public void setData()
-    {
+    public void setData() {
         // Set the percentage of language used
         total = cardboard_total + paper_total + plastic_total + metal_total + thermocol_total + glass_total;
 
@@ -142,12 +189,12 @@ public class NewAnalysisActivity extends AppCompatActivity {
         m_total = (metal_total * 100) / total;
         t_total = (thermocol_total * 100) / total;
         g_total = (glass_total * 100) / total;
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+c_total);
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+g_total);
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+m_total);
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pa_total);
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pl_total);
-        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+t_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+c_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+g_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+m_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pa_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pl_total);
+//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+t_total);
 
         tvCardboard.setText(Integer.toString((int) c_total));
         tvPaper.setText(Integer.toString((int) pa_total));
