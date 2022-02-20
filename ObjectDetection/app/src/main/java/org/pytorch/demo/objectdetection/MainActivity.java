@@ -96,9 +96,6 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             }
             return file.getAbsolutePath();
         }
-
-
-
     }
 
     @Override

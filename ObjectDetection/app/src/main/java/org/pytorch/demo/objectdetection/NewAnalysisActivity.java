@@ -33,6 +33,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+//Barchart
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 public class NewAnalysisActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long plastic_total = 0;
     public long paper_total = 0;
@@ -75,6 +82,33 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         tvThermacol = findViewById(R.id.tvThermacol);
         tvGlass = findViewById(R.id.tvGlass);
         pieChart = findViewById(R.id.piechart);
+
+        //Barchart
+        BarChart barChart = (BarChart) findViewById(R.id.barchart);
+
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(8f, 0));
+        entries.add(new BarEntry(2f, 1));
+        entries.add(new BarEntry(5f, 2));
+        entries.add(new BarEntry(20f, 3));
+        entries.add(new BarEntry(15f, 4));
+        entries.add(new BarEntry(19f, 5));
+
+        BarDataSet bardataset = new BarDataSet(entries, "Cells");
+
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("2016");
+        labels.add("2015");
+        labels.add("2014");
+        labels.add("2013");
+        labels.add("2012");
+        labels.add("2011");
+
+        BarData data = new BarData(labels, bardataset);
+        barChart.setData(data); // set the data and list of labels into chart
+        barChart.setDescription("Set Bar Chart Description Here");  // set the description
+        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+        barChart.animateY(5000);
 
         //Dropdown for locations
         locations.add("All");

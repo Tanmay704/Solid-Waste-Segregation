@@ -21,9 +21,6 @@
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,7 +39,6 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="15dp"
-
                 />
 
             <!-- to display pie chart details -->
@@ -192,7 +188,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="1000dp"
+        android:layout_height="1200dp"
         android:layout_below="@+id/cardViewGraph"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -216,10 +212,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="Solid Waste (In Percentage):"
-                android:textSize="23sp"
-                android:textStyle="bold" />
+                android:textSize="23sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -430,30 +425,46 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+
                 android:background="@color/color_two" />
 
             <!--Dropdown-->
             <TextView
                 android:id="@+id/txtVw"
-                android:text="Select Locations:"
+                android:text="Select Location:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
+                android:layout_marginTop="20dp"
                 android:textColor="#000000"
                 android:textSize="14sp"/>
+
+
             <Spinner
                 android:id="@+id/spinner_locations"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="Dropdown"
-
-                android:spinnerMode="dropdown"
-                android:drawSelectorOnTop="true"
                 android:background="@color/va"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <Button
+                android:id="@+id/chartbutton"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginBottom="60dp"
+                android:layout_marginTop="5dp"
+                android:text="NEXT" />
+
+            <!--barchart-->
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+                android:layout_height="305dp" />
 
         </LinearLayout>
 
@@ -461,12 +472,5 @@
 
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/chartbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp"
-        android:text="NEXT" />
+
 </RelativeLayout>
