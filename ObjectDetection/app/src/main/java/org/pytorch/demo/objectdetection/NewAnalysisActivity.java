@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
@@ -56,7 +57,13 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public long t_total = 0;
     public long g_total = 0;
 
-
+   //locationwise count
+   public long l_pl_total = 0;
+    public long l_pa_total = 0;
+    public long l_c_total = 0;
+    public long l_m_total = 0;
+    public long l_t_total = 0;
+    public long l_g_total = 0;
     //for drop down
 
 
@@ -127,6 +134,8 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
             @Override
             public void onClick(View v) {
                 System.out.println("--------------------"+spineerLocation.getSelectedItem());
+                String location = spineerLocation.getSelectedItem().toString();
+                getCountbyLocation(location);
 //                Intent intent= new Intent(NewAnalysisActivity.this,SecondActivity.class);
 //                intent.putExtra("data",String.valueOf(spineerLocation.getSelectedItem()));
 //                startActivity(intent);
@@ -149,7 +158,48 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public void onNothingSelected(AdapterView<?> parent) {
         Toast.makeText(getApplicationContext(), "please Select location: ", Toast.LENGTH_SHORT).show();
     }
+    public void getCountbyLocation(String location){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("GarbageCount").child(location);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
 
+
+                for (DataSnapshot ds : dataSnapshot1.getChildren()) {
+
+                    locations.add(ds.getKey().toString());
+
+
+                    l_pl_total += ds.child("Plastic").child("Count").getValue(Long.class);
+
+                    l_pa_total += ds.child("Paper").child("Count").getValue(Long.class);
+
+                    l_c_total += ds.child("Cardboard").child("Count").getValue(Long.class);
+
+                    l_m_total += ds.child("Metal").child("Count").getValue(Long.class);
+
+                    l_t_total += ds.child("Thermocol").child("Count").getValue(Long.class);
+
+                    l_g_total += ds.child("Glass").child("Count").getValue(Long.class);
+
+                    }
+         //call the bar graph
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_g_total);
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_t_total);
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_m_total);
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pl_total);
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pa_total);
+                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_c_total);
+
+                //piechart
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        }
     public void getAllCount() {
 
 
