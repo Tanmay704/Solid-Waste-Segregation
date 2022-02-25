@@ -58,7 +58,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public long g_total = 0;
 
    //locationwise count
-   public long l_pl_total = 0;
+    public long l_pl_total = 0;
     public long l_pa_total = 0;
     public long l_c_total = 0;
     public long l_m_total = 0;
@@ -90,32 +90,6 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         tvGlass = findViewById(R.id.tvGlass);
         pieChart = findViewById(R.id.piechart);
 
-        //Barchart
-        BarChart barChart = (BarChart) findViewById(R.id.barchart);
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(8f, 0));
-        entries.add(new BarEntry(2f, 1));
-        entries.add(new BarEntry(5f, 2));
-        entries.add(new BarEntry(20f, 3));
-        entries.add(new BarEntry(15f, 4));
-        entries.add(new BarEntry(19f, 5));
-
-        BarDataSet bardataset = new BarDataSet(entries, "Cells");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("2016");
-        labels.add("2015");
-        labels.add("2014");
-        labels.add("2013");
-        labels.add("2012");
-        labels.add("2011");
-
-        BarData data = new BarData(labels, bardataset);
-        barChart.setData(data); // set the data and list of labels into chart
-        barChart.setDescription("Set Bar Chart Description Here");  // set the description
-        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        barChart.animateY(5000);
 
         //Dropdown for locations
         locations.add("All");
@@ -167,23 +141,22 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
                 for (DataSnapshot ds : dataSnapshot1.getChildren()) {
 
-                    locations.add(ds.getKey().toString());
 
+                    l_pl_total = ds.child("Plastic").child("Count").getValue(Long.class);
 
-                    l_pl_total += ds.child("Plastic").child("Count").getValue(Long.class);
+                    l_pa_total = ds.child("Paper").child("Count").getValue(Long.class);
 
-                    l_pa_total += ds.child("Paper").child("Count").getValue(Long.class);
+                    l_c_total = ds.child("Cardboard").child("Count").getValue(Long.class);
 
-                    l_c_total += ds.child("Cardboard").child("Count").getValue(Long.class);
+                    l_m_total = ds.child("Metal").child("Count").getValue(Long.class);
 
-                    l_m_total += ds.child("Metal").child("Count").getValue(Long.class);
+                    l_t_total = ds.child("Thermocol").child("Count").getValue(Long.class);
 
-                    l_t_total += ds.child("Thermocol").child("Count").getValue(Long.class);
-
-                    l_g_total += ds.child("Glass").child("Count").getValue(Long.class);
+                    l_g_total = ds.child("Glass").child("Count").getValue(Long.class);
 
                     }
          //call the bar graph
+                barChart();
                 System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_g_total);
                 System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_t_total);
                 System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_m_total);
@@ -255,13 +228,37 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
         });
     }
+    //Barchart
+    public void barChart(){
 
-/*
-    public void callpiechart(){
+        BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(l_pl_total, 0));
+        entries.add(new BarEntry(l_pa_total , 1));
+        entries.add(new BarEntry(l_c_total , 2));
+        entries.add(new BarEntry(l_m_total , 3));
+        entries.add(new BarEntry(l_t_total , 4));
+        entries.add(new BarEntry(l_g_total , 5));
+
+        BarDataSet bardataset = new BarDataSet(entries, "Cells");
+
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("Plastic");
+        labels.add("Paper");
+        labels.add("Cardboard");
+        labels.add("Metal");
+        labels.add("Thermacol");
+        labels.add("Glass");
+
+        BarData data = new BarData(labels, bardataset);
+        barChart.setData(data); // set the data and list of labels into chart
+        barChart.setDescription("Set Bar Chart Description Here");  // set the description
+        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+        barChart.animateY(5000);
 
     }
-*/
+
 
     public void setData() {
         // Set the percentage of language used
