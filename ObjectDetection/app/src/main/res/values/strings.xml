@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YOLOv5</string>
+    <string name="app_name">wasteView</string>
     <string name="image_view">Image View</string>
     <string name="detect">Detect</string>
     <string name="run_model">Running the model...</string>
@@ -8,6 +8,7 @@
     <string name="live">Live</string>
 
     <string-array name="Waste">
+
         <item>Plastic</item>
         <item>Paper</item>
         <item>Metal</item>

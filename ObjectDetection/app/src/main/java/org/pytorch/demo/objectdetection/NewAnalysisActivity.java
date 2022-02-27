@@ -157,12 +157,12 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
                     }
          //call the bar graph
                 barChart();
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_g_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_t_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_m_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pl_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pa_total);
-                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_c_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_g_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_t_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_m_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pl_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pa_total);
+//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_c_total);
 
                 //piechart
             }
