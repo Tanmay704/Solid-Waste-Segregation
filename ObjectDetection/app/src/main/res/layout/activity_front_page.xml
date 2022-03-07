@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FrontPageActivity">
+    tools:context=".FrontPageActivity"
+    android:background="	#32CD32">
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,8 +50,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:text="About Us"
+            android:text="ABOUT US"
+            android:gravity="center"
             android:textSize="30sp"
+
+
+            android:background="@color/Ja"
+            android:layout_marginTop="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,6 +78,8 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+
                 android:text="      Solid waste management is a big challenge in urban areas for most of the countries throughout the world. A huge amount of waste is generated every day in India. But only negligible amount of this waste is being recycled. So it is necessary to study and analyze existing waste segregation techniques and to develop a System which can automize the solid waste segregation process and which also gives analysis of waste classifier according to their types. After segregation solid waste our main aim is to perform analysis on Results over a period of time. we propose a solution for garbage segregation based on deep learning approach through a YOLO (‘you only look once’) algorithm which uses neural networks to provide real-time object detection. This algorithm is popular because of its speed and accuracy. For this we have used TACO Dataset which is an open image dataset of waste used for training object detection model.                                      This application will provide the detailed insights of all types of waste and also it will give warning when the amount of hazardous or non degradable increases Municipal corporation can use this waste insights to recycle or dispose the waste from a particular area like schools, offices, campuses, etc. The Proposed application will automated waste collection showing improved successful waste detection rates (about 98%),  reduced false positives (less than 2%),  and will improve operational safety and reliability when implemented in the real-time system. igugugiugiugiugiuggiggugigiugiugiugiugigiugigiuguiuhuigiugiugiugiugiugiuguigiugiugigiugiug"
                 android:textSize="18sp" />
         </ScrollView>
