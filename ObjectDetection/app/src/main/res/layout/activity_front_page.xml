@@ -4,87 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FrontPageActivity"
-    android:background="	#32CD32">
+    tools:context=".FrontPageActivity">
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="412dp"
-            android:layout_height="65dp"
-            app:itemHorizontalTranslationEnabled="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="409dp"
+        android:layout_height="59dp"
+        app:itemHorizontalTranslationEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homebutton"
+                android:layout_width="119dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:background="#61C25A"
+                android:text="Home" />
 
-                <Button
-                    android:id="@+id/homebutton"
-                    android:layout_width="103dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Home" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
 
-                <Button
-                    android:id="@+id/button_location"
-                    android:layout_width="103dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Camera" />
+            <Button
+                android:id="@+id/button_location"
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#61C25A"
+                android:text="Camera" />
 
-                <Button
-                    android:id="@+id/button_analysis"
-                    android:layout_width="103dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Analysis" />
-            </LinearLayout>
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
+
+            <Button
+                android:id="@+id/button_analysis"
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#61C25A"
+                android:text="Analysis" />
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/Ja"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+
+
+        android:text="ABOUT US"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="413dp"
+        android:layout_height="600dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="ABOUT US"
-            android:gravity="center"
-            android:textSize="30sp"
+            android:layout_marginTop="80dp"
 
-
-            android:background="@color/Ja"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ScrollView
-            android:id="@+id/scrollView2"
-            android:layout_width="408dp"
-            android:layout_height="611dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-
-                android:text="      Solid waste management is a big challenge in urban areas for most of the countries throughout the world. A huge amount of waste is generated every day in India. But only negligible amount of this waste is being recycled. So it is necessary to study and analyze existing waste segregation techniques and to develop a System which can automize the solid waste segregation process and which also gives analysis of waste classifier according to their types. After segregation solid waste our main aim is to perform analysis on Results over a period of time. we propose a solution for garbage segregation based on deep learning approach through a YOLO (‘you only look once’) algorithm which uses neural networks to provide real-time object detection. This algorithm is popular because of its speed and accuracy. For this we have used TACO Dataset which is an open image dataset of waste used for training object detection model.                                      This application will provide the detailed insights of all types of waste and also it will give warning when the amount of hazardous or non degradable increases Municipal corporation can use this waste insights to recycle or dispose the waste from a particular area like schools, offices, campuses, etc. The Proposed application will automated waste collection showing improved successful waste detection rates (about 98%),  reduced false positives (less than 2%),  and will improve operational safety and reliability when implemented in the real-time system. igugugiugiugiugiuggiggugigiugiugiugiugigiugigiuguiuhuigiugiugiugiugiugiuguigiugiugigiugiug"
-                android:textSize="18sp" />
-        </ScrollView>
-
-
+            android:text="      Solid waste management is a big challenge in urban areas for most of the countries throughout the world. A huge amount of waste is generated every day in India. But only negligible amount of this waste is being recycled. So it is necessary to study and analyze existing waste segregation techniques and to develop a System which can automize the solid waste segregation process and which also gives analysis of waste classifier according to their types. After segregation solid waste our main aim is to perform analysis on Results over a period of time. we propose a solution for garbage segregation based on deep learning approach through a YOLO (‘you only look once’) algorithm which uses neural networks to provide real-time object detection. This algorithm is popular because of its speed and accuracy. For this we have used TACO Dataset which is an open image dataset of waste used for training object detection model.                                      This application will provide the detailed insights of all types of waste and also it will give warning when the amount of hazardous or non degradable increases Municipal corporation can use this waste insights to recycle or dispose the waste from a particular area like schools, offices, campuses, etc. The Proposed application will automated waste collection showing improved successful waste detection rates (about 98%),  reduced false positives (less than 2%),  and will improve operational safety and reliability when implemented in the real-time system. igugugiugiugiugiuggiggugigiugiugiugiugigiugigiuguiuhuigiugiugiugiugiugiuguigiugiugigiugiug"
+            android:textSize="18sp" />
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
