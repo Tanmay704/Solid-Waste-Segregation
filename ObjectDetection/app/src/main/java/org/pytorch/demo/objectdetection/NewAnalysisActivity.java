@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,6 +66,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public long l_g_total = 0;
     //for drop down
 
+    private  DatabaseReference databaseReference;
 
     List<String> locations = new ArrayList<String>();
     TextView tvCardboard, tvPaper, tvPlastic, tvMetal, tvThermacol, tvGlass;
@@ -133,7 +134,8 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         Toast.makeText(getApplicationContext(), "please Select location: ", Toast.LENGTH_SHORT).show();
     }
     public void getCountbyLocation(String location){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("GarbageCount").child(location);
+
+        databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("GarbageCount").child(location);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
@@ -157,19 +159,12 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
                     }
          //call the bar graph
                 barChart();
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_g_total);
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_t_total);
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_m_total);
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pl_total);
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_pa_total);
-//                System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+l_c_total);
-
-                //piechart
+              //piechart
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(NewAnalysisActivity.this, "Network Error..." + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         }
@@ -187,6 +182,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
                 metal_total = 0;
                 thermocol_total = 0;
                 glass_total = 0;
+
                 for (DataSnapshot ds : dataSnapshot1.getChildren()) {
 
                     locations.add(ds.getKey().toString());
@@ -219,10 +215,13 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
                 setData();
             }
 
+
+
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
+                Toast.makeText(NewAnalysisActivity.this, "Network Error..." + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
 
@@ -234,12 +233,14 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(l_pl_total, 0));
-        entries.add(new BarEntry(l_pa_total , 1));
-        entries.add(new BarEntry(l_c_total , 2));
-        entries.add(new BarEntry(l_m_total , 3));
-        entries.add(new BarEntry(l_t_total , 4));
-        entries.add(new BarEntry(l_g_total , 5));
+        long totalOf = l_c_total + l_g_total + l_m_total + l_pl_total + l_t_total + l_pa_total;
+
+        entries.add(new BarEntry((l_pl_total*100)/totalOf, 0));
+        entries.add(new BarEntry((l_pa_total*100)/totalOf , 1));
+        entries.add(new BarEntry((l_c_total*100)/totalOf , 2));
+        entries.add(new BarEntry((l_m_total*100)/totalOf , 3));
+        entries.add(new BarEntry((l_t_total*100)/totalOf , 4));
+        entries.add(new BarEntry((l_g_total*100)/totalOf , 5));
 
         BarDataSet bardataset = new BarDataSet(entries, "Cells");
 
@@ -248,7 +249,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         labels.add("Paper");
         labels.add("Cardboard");
         labels.add("Metal");
-        labels.add("Thermacol");
+        labels.add("Thermocol");
         labels.add("Glass");
 
         BarData data = new BarData(labels, bardataset);
@@ -270,12 +271,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         m_total = (metal_total * 100) / total;
         t_total = (thermocol_total * 100) / total;
         g_total = (glass_total * 100) / total;
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+c_total);
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+g_total);
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+m_total);
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pa_total);
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+pl_total);
-//        System.out.println("())))))))))))))))))))))))))))))))))))))))))))))))))))))))))"+t_total);
+
 
         tvCardboard.setText(Integer.toString((int) c_total));
         tvPaper.setText(Integer.toString((int) pa_total));
@@ -308,7 +304,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
         pieChart.addPieSlice(
                 new PieModel(
-                        "Thermacol",
+                        "Thermocol",
                         Integer.parseInt(tvThermacol.getText().toString()),
                         Color.parseColor("#000000")));
 

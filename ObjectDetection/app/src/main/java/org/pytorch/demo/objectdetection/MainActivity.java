@@ -139,8 +139,13 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
                 GarbageLocality garbageLocality = new GarbageLocality();
+                try{
                 locality = addresses.get(0).getLocality().trim();
-                garbageLocality.check_locality(locality,formattedDate);
+
+                garbageLocality.check_locality(locality,formattedDate);}
+                catch(Exception error){
+                    Toast.makeText(MainActivity.this, "Please on your GPS...", Toast.LENGTH_LONG).show();
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -346,11 +351,11 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                         getCurrCount2++;
                     } else if (results.get(i).classIndex == 2) {
                         getCurrCount3++;
-                    } else if (results.get(i).classIndex == 4) {
+                    } else if (results.get(i).classIndex == 3) {
                         getCurrCount4++;
-                    } else if (results.get(i).classIndex == 5) {
+                    } else if (results.get(i).classIndex == 4) {
                         getCurrCount5++;
-                    } else if (results.get(i).classIndex == 6 || results.get(i).classIndex == 7) {
+                    } else if (results.get(i).classIndex == 5) {
                         getCurrCount6++;
                     }
 

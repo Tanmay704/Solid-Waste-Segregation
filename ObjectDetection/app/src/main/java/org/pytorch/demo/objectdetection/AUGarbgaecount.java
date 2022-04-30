@@ -32,6 +32,7 @@ public class AUGarbgaecount {
 //
 
 
+        
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("GarbageCount").child(locality).child(formattedDate);
 

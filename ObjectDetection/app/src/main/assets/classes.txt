@@ -1,8 +1,6 @@
 Cardboard
 Glass
 Metal
-Other
 Paper
 Plastic
-Thermacol
 Thermocol
