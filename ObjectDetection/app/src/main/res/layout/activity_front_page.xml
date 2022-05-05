@@ -13,25 +13,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="8dp"
+        android:gravity="center|start"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dashboard"
-            android:textColor="#090909"
+            android:gravity="center|start"
+            android:drawableLeft="@drawable/ic_baseline_dashboard_24"
+            android:drawablePadding="4dp"
+            android:paddingEnd="6dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="85dp"
+            android:textColor="#FFFFFF"
             android:textSize="40sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:textAlignment="center"
-            android:textColor="#090909"
-            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -75,7 +74,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#61C25A"
-                        android:text="Capture" />
+                        android:text="Capture"
+                        android:gravity="center|start"
+                        android:drawableLeft="@drawable/ic_camera"
+                        android:drawablePadding="3dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="10dp"/>
+
 
                 </LinearLayout>
 
@@ -102,7 +107,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#61C25A"
-                        android:text="Analysis" />
+                        android:text="Analysis"
+                        android:gravity="center|start"
+                        android:drawableLeft="@drawable/ic_analysis_icon"
+                        android:drawablePadding="3dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"/>
+                    />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -137,7 +148,12 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#61C25A"
-                        android:text="Report\n\n Authority " />
+                        android:text="Report"
+                        android:gravity="center|start"
+                        android:drawableLeft="@drawable/ic_report_icon"
+                        android:drawablePadding="3dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="10dp"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -157,7 +173,12 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="#61C25A"
-                    android:text="About US" />
+                    android:text="About US"
+                    android:gravity="center|start"
+                    android:drawableLeft="@drawable/ic_about_icon"
+                    android:drawablePadding="3dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"/>
 
             </androidx.cardview.widget.CardView>
 

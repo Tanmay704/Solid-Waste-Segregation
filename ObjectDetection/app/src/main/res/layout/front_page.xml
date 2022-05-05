@@ -33,6 +33,10 @@
             android:layout_marginStart="44dp"
             android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-condensed"
+
+
+
+
             android:text="Welcome"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="40sp"

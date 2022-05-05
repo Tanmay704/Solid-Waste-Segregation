@@ -65,7 +65,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public long l_t_total = 0;
     public long l_g_total = 0;
     //for drop down
-
+    TextView txtMarquee;
     private  DatabaseReference databaseReference;
 
     List<String> locations = new ArrayList<String>();
@@ -81,6 +81,11 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.analysis_activity);
+
+        // casting of marquee textview
+        txtMarquee = (TextView) findViewById(R.id.marqueeText);
+        txtMarquee.setSelected(true);
+
 
         //chart
         tvCardboard = findViewById(R.id.tvCardboard);
@@ -234,7 +239,8 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
         ArrayList<BarEntry> entries = new ArrayList<>();
         long totalOf = l_c_total + l_g_total + l_m_total + l_pl_total + l_t_total + l_pa_total;
-
+        if(totalOf == 0)
+            totalOf = 1;
         entries.add(new BarEntry((l_pl_total*100)/totalOf, 0));
         entries.add(new BarEntry((l_pa_total*100)/totalOf , 1));
         entries.add(new BarEntry((l_c_total*100)/totalOf , 2));
