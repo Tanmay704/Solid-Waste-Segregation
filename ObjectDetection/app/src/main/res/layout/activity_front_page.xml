@@ -6,34 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="7"
-    android:background="#808080"
     tools:context=".FrontPageActivity">
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="bottom"
-        android:background="#696969"
-        android:padding="12dp"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dashboard"
-            android:textStyle="bold"
-            android:textColor="#090909"
-            android:textSize="40sp"
-            />
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Dashboard"
             android:textColor="#090909"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Welcome"
             android:textAlignment="center"
+            android:textColor="#090909"
             android:textSize="25sp" />
 
     </LinearLayout>
@@ -45,66 +42,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="6"
+        android:background="#C6C4C4"
         android:orientation="vertical"
-        android:weightSum="2"
         android:padding="16dp"
-        >
+        android:weightSum="2">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:weightSum="2"
             android:padding="16dp"
-            >
+            android:weightSum="2">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="12dp"
+                android:layout_weight="1"
                 android:background="#fff"
-                >
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
 
                     <Button
-                                    android:id="@+id/button_location"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="#61C25A"
-                                    android:text="Capture" />
+                        android:id="@+id/button_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#61C25A"
+                        android:text="Capture" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="12dp"
+                android:layout_weight="1"
                 android:background="#fff"
-                >
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <Button
-                                    android:id="@+id/button_analysis"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="#61C25A"
-                                    android:text="Analysis" />
+                        android:id="@+id/button_analysis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#61C25A"
+                        android:text="Analysis" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -115,25 +113,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:weightSum="2"
             android:padding="16dp"
-            >
+            android:weightSum="2">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="12dp"
+                android:layout_weight="1"
                 android:background="#fff"
-                >
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical">
+
                     <Button
                         android:id="@+id/button_contact"
                         android:layout_width="match_parent"
@@ -144,15 +141,16 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="12dp"
+                android:layout_weight="1"
                 android:background="#fff"
-                >
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
                 <Button
                     android:id="@+id/button_aboutUs"
                     android:layout_width="match_parent"

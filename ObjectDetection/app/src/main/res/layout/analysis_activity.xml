@@ -11,45 +11,54 @@
     tools:context=".NewAnalysisActivity">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#61C25A"
+
+
+        android:paddingLeft="6dp"
+        android:paddingTop="6dp"
+        android:text="Analysis"
+        android:textSize="30sp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="65dp"
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="215dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <!--Pie chart to display the data-->
 
-            <org.eazegraph.lib.charts.PieChart
-                xmlns:app="http://schemas.android.com/apk/res-auto"
+            <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/piechart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:padding="6dp"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
-                />
+                android:layout_weight="1"
+                android:padding="6dp" />
 
             <!-- to display pie chart details -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
-                android:orientation="vertical"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -60,14 +69,14 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/R"/>
+                        android:background="@color/R" />
 
                     <!--Text view to display R -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cardboard"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Cardboard" />
 
                 </LinearLayout>
 
@@ -82,14 +91,14 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/Python"/>
+                        android:background="@color/Python" />
 
                     <!--Text view to display python text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Paper"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Paper" />
 
                 </LinearLayout>
 
@@ -104,14 +113,14 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/CPP"/>
+                        android:background="@color/CPP" />
 
                     <!--Text view to display C++ text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Plastic"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Plastic" />
 
                 </LinearLayout>
 
@@ -126,16 +135,17 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/Java"/>
+                        android:background="@color/Java" />
 
                     <!--Text view to display Java text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Metal"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Metal" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -146,16 +156,17 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/Ja"/>
+                        android:background="@color/Ja" />
 
                     <!--Text view to display Java text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thermacol"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Thermacol" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -166,14 +177,14 @@
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
-                        android:background="@color/va"/>
+                        android:background="@color/va" />
 
                     <!--Text view to display Java text -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Glass"
-                        android:paddingLeft="10dp"/>
+                        android:paddingLeft="10dp"
+                        android:text="Glass" />
 
                 </LinearLayout>
 
@@ -444,7 +455,7 @@
                 android:id="@+id/spinner_locations"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/va"
+                android:background="#61C25A"
                 android:drawSelectorOnTop="true"
                 android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"

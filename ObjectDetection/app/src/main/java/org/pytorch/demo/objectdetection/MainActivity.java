@@ -180,30 +180,78 @@ public class MainActivity extends AppCompatActivity implements Runnable {
         buttonSelect.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mResultView.setVisibility(View.INVISIBLE);
+                AlertDialog.Builder builder
+                        = new AlertDialog
+                        .Builder(MainActivity.this);
 
-                final CharSequence[] options = { "Choose from Photos", "Take Picture", "Cancel" };
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("New Test Image");
+                // Set the message show for the Alert time
+                builder.setMessage("1. Image size should be 640 * 640 pixels \n" +
+                        "2. Image should be from this 5 classes - Plastic, Paper, Metal, Thermacol, Cardboard, Glass\n" +
+                        "3. Selecting different kind of image will result in inaccurate result and affect the overall analysis\n" +
+                        "4. Object size may affect the result");
 
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        if (options[item].equals("Take Picture")) {
-                            Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(takePicture, 0);
-                        }
-                        else if (options[item].equals("Choose from Photos")) {
-                            Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                            startActivityForResult(pickPhoto , 1);
-                        }
-                        else if (options[item].equals("Cancel")) {
-                            dialog.dismiss();
-                        }
-                    }
-                });
-                builder.show();
+                // Set Alert Title
+                builder.setTitle("Note !");
+
+                // Set Cancelable false
+                // for when the user clicks on the outside
+                // the Dialog Box then it will remain show
+                builder.setCancelable(false);
+
+                // Set the positive button with yes name
+                // OnClickListener method is use of
+                // DialogInterface interface.
+
+                builder
+                        .setPositiveButton(
+                                "Yes",
+                                new DialogInterface
+                                        .OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which)
+                                    {
+                                        final CharSequence[] options = { "Choose from Photos", "Take Picture", "Cancel" };
+                                        AlertDialog.Builder builders = new AlertDialog.Builder(MainActivity.this);
+                                        builders.setTitle("New Test Image");
+
+                                        builders.setItems(options, new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int item) {
+                                                if (options[item].equals("Take Picture")) {
+                                                    Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                                                    startActivityForResult(takePicture, 0);
+                                                }
+                                                else if (options[item].equals("Choose from Photos")) {
+                                                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                                                    startActivityForResult(pickPhoto , 1);
+                                                }
+                                                else if (options[item].equals("Cancel")) {
+                                                    dialog.dismiss();
+                                                }
+                                            }
+                                        });
+                                        builders.show();
+
+                                    }
+                                });
+
+
+
+                // Create the Alert dialog
+                AlertDialog alertDialog = builder.create();
+
+                // Show the Alert Dialog box
+                alertDialog.show();
                 mButtonDetect.setEnabled(true);
+
+//
+//
+
+
             }
+
 
         });
 
@@ -259,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
