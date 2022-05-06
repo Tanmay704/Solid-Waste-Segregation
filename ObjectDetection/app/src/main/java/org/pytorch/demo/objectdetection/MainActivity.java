@@ -139,9 +139,15 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 GarbageLocality garbageLocality = new GarbageLocality();
                 //locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
                 // city name + district name
-                    if(addresses.get(0).getSubLocality() == null)
-                      locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
-                    else locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
+                //    if(addresses.get(0).getSubLocality() == null)
+                //      locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
+                //    else locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
+                String[] add = addresses.get(0).getAddressLine(0).trim().split(",");
+                locality = "";
+                for(int i = 1; i < add.length - 1; i++){
+                    if(add[i].trim() != null) locality += add[i];
+                }
+
                 garbageLocality.check_locality(locality,formattedDate);
 
             } catch (Exception e) {

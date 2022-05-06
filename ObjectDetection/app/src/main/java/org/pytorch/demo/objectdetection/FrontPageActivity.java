@@ -26,6 +26,7 @@ import java.util.Locale;
 public class FrontPageActivity extends AppCompatActivity implements LocationListener{
     public Button button_location;
     public Button button_analysis;
+    public Button button_about;
     LocationManager locationManager;
 
     @Override
@@ -69,8 +70,22 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
             }
         });
 
+        //about us button
+        button_about = (Button)findViewById(R.id.button_aboutUs);
 
+        button_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAboutus();
+            }
+        });
     }
+    //aboutus
+    public void openAboutus(){
+        Intent intent = new Intent(FrontPageActivity.this, aboutus.class);
+        startActivity(intent);
+    }
+
 
     public void openAnalysisActivity(){
         Intent intent = new Intent(FrontPageActivity.this, NewAnalysisActivity.class);
