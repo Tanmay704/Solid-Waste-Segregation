@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +30,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -105,7 +107,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locations);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spineerLocation.setPrompt("Select your favorite Planet!");
+        spineerLocation.setPrompt("Select your Location!");
         spineerLocation.setAdapter(adapter);
 
         spineerLocation.setOnItemSelectedListener(this);
@@ -260,7 +262,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
         BarData data = new BarData(labels, bardataset);
         barChart.setData(data); // set the data and list of labels into chart
-        barChart.setDescription("Set Bar Chart Description Here");  // set the description
+        barChart.setDescription("%age of different Wastes");  // set the description
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         barChart.animateY(5000);
 
@@ -268,7 +270,7 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
 
 
     public void setData() {
-        // Set the percentage of language used
+        // Set the percentage of waste
         total = cardboard_total + paper_total + plastic_total + metal_total + thermocol_total + glass_total;
 
         c_total = (cardboard_total * 100) / total;

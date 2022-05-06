@@ -140,7 +140,10 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
                 GarbageLocality garbageLocality = new GarbageLocality();
                 try{
-                locality = addresses.get(0).getLocality().trim();
+                    //place name + city Name
+                    locality = addresses.get(0).getSubLocality().trim() +", " + addresses.get(0).getLocality().trim();
+                    // city name + district name
+                //locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
 
                 garbageLocality.check_locality(locality,formattedDate);}
                 catch(Exception error){

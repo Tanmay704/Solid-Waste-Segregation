@@ -26,10 +26,10 @@ import java.util.List;
 import java.util.Locale;
 
 
+
 public class FrontPageActivity extends AppCompatActivity implements LocationListener{
     public Button button_location;
     public Button button_analysis;
-    TextView textView_location;
     LocationManager locationManager;
 
     @Override
@@ -111,6 +111,7 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
 
                 intent.putExtra("Latitude", location.getLatitude());
                 intent.putExtra("Longitude", location.getLongitude());
+
 
                 startActivity(intent);
                 //    textView_location.setText(address);

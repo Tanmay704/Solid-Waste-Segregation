@@ -24,6 +24,7 @@
         android:paddingTop="6dp"
         android:paddingEnd="10dp"
         android:text="Analysis"
+        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
 
@@ -471,16 +472,12 @@
                 android:textSize="14sp"/>
 
 
-            <Spinner
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                 android:id="@+id/spinner_locations"
                 android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="40dp"
-                android:background="#61C25A"
-                android:drawSelectorOnTop="true"
-                android:spinnerMode="dropdown"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:background="@drawable/btn_select_activity_main"/>
 
             <Button
                 android:id="@+id/chartbutton"
@@ -489,7 +486,8 @@
                 android:layout_marginLeft="130dp"
                 android:layout_marginBottom="60dp"
                 android:layout_marginTop="5dp"
-                android:text="Show" />
+                android:text="Show"
+                android:background="@drawable/btn_shape_capsule"/>
 
             <!--barchart-->
             <com.github.mikephil.charting.charts.BarChart
