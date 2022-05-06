@@ -1,16 +1,8 @@
 package org.pytorch.demo.objectdetection;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.Button;
-import android.content.Intent;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -20,8 +12,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -100,11 +96,13 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
-
-            Toast.makeText(this, "" + location.getLatitude() + "," + location.getLongitude(), Toast.LENGTH_SHORT).show();
             try {
-                Geocoder geocoder = new Geocoder(FrontPageActivity.this, Locale.getDefault());
-                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            Geocoder geocoder = new Geocoder(FrontPageActivity.this, Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if(addresses != null)
+            Toast.makeText(this, "Your location detected :" + addresses.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
+
+
                 String address = addresses.get(0).getAddressLine(0);
 
                 Intent intent = new Intent(FrontPageActivity.this, MainActivity.class);

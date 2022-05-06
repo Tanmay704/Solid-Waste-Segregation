@@ -6,11 +6,6 @@
 
 package org.pytorch.demo.objectdetection;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,8 +26,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.os.Bundle;
-import android.content.Intent;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import org.pytorch.IValue;
 import org.pytorch.LiteModuleLoader;
@@ -139,18 +137,14 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
                 GarbageLocality garbageLocality = new GarbageLocality();
-                try{
-                    //place name + city Name
-                    locality = addresses.get(0).getSubLocality().trim() +", " + addresses.get(0).getLocality().trim();
-                    // city name + district name
-                //locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
+                //locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
+                // city name + district name
+                    if(addresses.get(0).getSubLocality() == null)
+                      locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
+                    else locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
+                garbageLocality.check_locality(locality,formattedDate);
 
-                garbageLocality.check_locality(locality,formattedDate);}
-                catch(Exception error){
-                    Toast.makeText(MainActivity.this, "Please on your GPS...", Toast.LENGTH_LONG).show();
-                }
-
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -189,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
                 // Set the message show for the Alert time
                 builder.setMessage("1. Image size should be 640 * 640 pixels \n" +
-                        "2. Image should be from this 5 classes - Plastic, Paper, Metal, Thermacol, Cardboard, Glass\n" +
+                        "2. Image should be from this 5 classes - Plastic, Paper, Metal, Thermocol, Cardboard, Glass\n" +
                         "3. Selecting different kind of image will result in inaccurate result and affect the overall analysis\n" +
                         "4. Object size may affect the result");
 

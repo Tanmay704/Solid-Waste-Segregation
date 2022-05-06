@@ -1,47 +1,38 @@
 package org.pytorch.demo.objectdetection;
 
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.Spinner;
-import android.widget.Toast;
-
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-//piechart libraries
-import androidx.appcompat.app.AppCompatActivity;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
-
-// Dropdown
-import android.view.View;
-import android.widget.AdapterView;
-
-import android.widget.ArrayAdapter;
-import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+//piechart libraries
+// Dropdown
 //Barchart
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 public class NewAnalysisActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long plastic_total = 0;
@@ -272,7 +263,8 @@ public class NewAnalysisActivity extends AppCompatActivity implements AdapterVie
     public void setData() {
         // Set the percentage of waste
         total = cardboard_total + paper_total + plastic_total + metal_total + thermocol_total + glass_total;
-
+        if(total == 0)
+            total = 1;
         c_total = (cardboard_total * 100) / total;
         pa_total = (paper_total * 100) / total;
         pl_total = (plastic_total * 100) / total;
