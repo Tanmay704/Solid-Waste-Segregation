@@ -66,10 +66,11 @@ public class UploadActivity extends AppCompatActivity {
 		double[] location=intent.getDoubleArrayExtra("Location");
 		assert location != null;
 		latLng=new LatLng(location[0],location[1]);
+	//	System.out.println("::::::::::::::::::::::" + location[0] + " " + location[1] + "::::::::::::::");
 		FirebaseApp.initializeApp(this);
 
-		storageReference = FirebaseStorage.getInstance().getReference("garbage-request");
-		databaseReference = FirebaseDatabase.getInstance().getReference("garbage-request");
+		storageReference = FirebaseStorage.getInstance("gs://solid-waste-segregation.appspot.com").getReference("garbage-request");
+		databaseReference = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("garbage-request");
 		choose.setOnClickListener(view -> openFileChooser());
 		radioButton.toggle();
 		radioButton3.toggle();

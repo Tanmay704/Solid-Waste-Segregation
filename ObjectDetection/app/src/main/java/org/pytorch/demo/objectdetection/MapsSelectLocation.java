@@ -94,7 +94,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 
 		FirebaseApp.initializeApp(this);
 		MOB_NUMBER = getIntent().getStringExtra("MOB_NUMBER");
-		myRef = FirebaseDatabase.getInstance().getReference("garbage-request");
+		myRef = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("garbage-request");
 
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
 				.addApi(LocationServices.API)
@@ -380,7 +380,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 			final String key=key1.substring(key1.lastIndexOf(':')+2);
 			final int up=Integer.parseInt(key1.substring(key1.indexOf(':')+2,key1.indexOf('\n')));
 			System.out.println(key+" "+up);
-			DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("garbage-request/"+key);
+			DatabaseReference databaseReference=FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("garbage-request/"+key);
 			databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 				@Override
 				public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -420,7 +420,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 			final String key=key1.substring(key1.lastIndexOf(':')+2);
 			final int up=Integer.parseInt(key1.substring(key1.indexOf(':')+2,key1.indexOf('\n')));
 			System.out.println(key+" "+up);
-			DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("garbage-request/"+key);
+			DatabaseReference databaseReference=FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("garbage-request/"+key);
 			databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
 				@Override
 				public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

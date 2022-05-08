@@ -96,7 +96,7 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
 
     private void openReportActivity() {
         Intent intent = new Intent(FrontPageActivity.this, MapsSelectLocation.class);
-        intent.putExtra("MOB_NUMBER","454545444");
+        intent.putExtra("MOB_NUMBER","2525");
         startActivity(intent);
     }
 
