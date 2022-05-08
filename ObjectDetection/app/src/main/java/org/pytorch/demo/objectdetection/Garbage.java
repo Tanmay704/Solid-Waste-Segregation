@@ -26,13 +26,13 @@ public class Garbage {
 		this.description = description;
 		this.severe = severe;
 		this.organic = organic;
-		this.latitude=latitude;
-		this.longitude=longitude;
-		this.upvotes=upvotes;
-		this.verified=verified;
-		this.url=url;
-		this.mobNumber=mobNumber;
-		this.upvoters=upvoters;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.upvotes = upvotes;
+		this.verified = verified;
+		this.url = url;
+		this.mobNumber = mobNumber;
+		this.upvoters = upvoters;
 	}
 
 	public String getDescription()

@@ -1,14 +1,13 @@
 package org.pytorch.demo.objectdetection;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class ReportPopUp extends AppCompatActivity{
@@ -34,11 +33,25 @@ public class ReportPopUp extends AppCompatActivity{
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                  try{
+                if (nameInput.getText().toString().trim().isEmpty() || mobileNumberInput.getText().toString().trim() == null)
+                {
+                    Toast.makeText(ReportPopUp.this,
+                            "Empty field not allowed!",
+                            Toast.LENGTH_SHORT).show();
+                }else{
                 name = nameInput.getText().toString();
+
                 mobileNumber = Integer.parseInt(mobileNumberInput.getText().toString());
 
-                openReportActivity();
+                openReportActivity();}
+            } catch(Exception e){
+                      Toast.makeText(ReportPopUp.this,
+                              "Empty field not allowed!",
+                              Toast.LENGTH_SHORT).show();
+                  }
             }
+
         });
 
         backButton = (Button) findViewById(R.id.backButton);

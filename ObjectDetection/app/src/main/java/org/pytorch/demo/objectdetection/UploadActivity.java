@@ -119,8 +119,12 @@ public class UploadActivity extends AppCompatActivity {
 							String uploadID = time+"";
 							databaseReference.child(uploadID).setValue(garbage);
 							progressDialog.cancel();
-							Toast.makeText(UploadActivity.this,"Garbage adding Successful!",Toast.LENGTH_LONG).show();
+							Toast.makeText(this ,"Garbage adding Successful!",Toast.LENGTH_LONG).show();
 							finish();
+							Intent intent = new Intent(this, FrontPageActivity.class);
+							startActivity(intent);
+
+
 						});
 					})
 					.addOnFailureListener(e -> {
