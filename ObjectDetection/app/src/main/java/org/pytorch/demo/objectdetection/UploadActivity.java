@@ -40,6 +40,7 @@ public class UploadActivity extends AppCompatActivity {
 	private long time = System.currentTimeMillis();
 	private LatLng latLng;
 	private String MOB_NUMBER="ashu";
+	private String name;
 	private ArrayList<String> upvoters;
 	private ProgressDialog progressDialog;
 
@@ -63,6 +64,7 @@ public class UploadActivity extends AppCompatActivity {
 		upload = findViewById(R.id.button4);
 		Intent intent = getIntent();
 		MOB_NUMBER = intent.getStringExtra("MOB_NUMBER");
+		name = intent.getStringExtra("Name");
 		double[] location=intent.getDoubleArrayExtra("Location");
 		assert location != null;
 		latLng=new LatLng(location[0],location[1]);
@@ -115,7 +117,7 @@ public class UploadActivity extends AppCompatActivity {
 						storageReference.child(time+"."+getFileExtension(ImageUri)).getDownloadUrl().addOnSuccessListener(uri -> {
 							String url = uri.toString();
 							upvoters.add(MOB_NUMBER);
-								Garbage garbage = new Garbage(description.getText().toString().trim(),severe,organic,latLng.latitude,latLng.longitude,1,false,url,MOB_NUMBER,upvoters);
+								Garbage garbage = new Garbage(description.getText().toString().trim(),severe,organic,latLng.latitude,latLng.longitude,1,name,url,MOB_NUMBER,upvoters);
 							String uploadID = time+"";
 							databaseReference.child(uploadID).setValue(garbage);
 							progressDialog.cancel();

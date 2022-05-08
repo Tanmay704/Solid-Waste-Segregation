@@ -44,7 +44,7 @@ public class ReportPopUp extends AppCompatActivity{
 
                 mobileNumber = Integer.parseInt(mobileNumberInput.getText().toString());
 
-                openReportActivity();}
+                openReportActivity(name, String.valueOf(mobileNumber));}
             } catch(Exception e){
                       Toast.makeText(ReportPopUp.this,
                               "Empty field not allowed!",
@@ -69,10 +69,12 @@ public class ReportPopUp extends AppCompatActivity{
         startActivity(intent);
     }
 
-    private void openReportActivity() {
+    private void openReportActivity(String name, String mobNO) {
         Intent intent = new Intent(ReportPopUp.this, MapsSelectLocation.class);
-        intent.putExtra("Name", "name");
+        intent.putExtra("Name", name);
+        intent.putExtra("MOB_NUMBER",mobNO);
         startActivity(intent);
+
     }
 
 }

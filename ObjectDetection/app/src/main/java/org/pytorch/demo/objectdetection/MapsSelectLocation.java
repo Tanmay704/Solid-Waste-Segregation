@@ -78,6 +78,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 	private FloatingActionButton floatingActionButton;
 	private Button buttonConfirm;
 	private String MOB_NUMBER;
+	private String Name;
 	private DatabaseReference myRef;
 
 	@Override
@@ -94,6 +95,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 
 		FirebaseApp.initializeApp(this);
 		MOB_NUMBER = getIntent().getStringExtra("MOB_NUMBER");
+		Name = getIntent().getStringExtra("Name");
 		myRef = FirebaseDatabase.getInstance("https://solid-waste-segregation-default-rtdb.firebaseio.com/").getReference("garbage-request");
 
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -117,6 +119,7 @@ public class MapsSelectLocation extends FragmentActivity implements OnMapReadyCa
 			location[1] = latLng.longitude;
 			intent.putExtra("Location", location);
 			intent.putExtra("MOB_NUMBER", MOB_NUMBER);
+			intent.putExtra("Name",Name);
 			startActivity(intent);
 			finish();
 		});

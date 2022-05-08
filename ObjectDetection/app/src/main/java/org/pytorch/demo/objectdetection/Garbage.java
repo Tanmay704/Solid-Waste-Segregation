@@ -10,7 +10,7 @@ public class Garbage {
 	private double latitude;
 	private double longitude;
 	private int upvotes;
-	private boolean verified;
+	private String name;
 	private String url;
 	private String mobNumber;
 	private ArrayList<String> upvoters;
@@ -18,7 +18,7 @@ public class Garbage {
 		//empty
 	}
 
-	public Garbage(String description, boolean severe, boolean organic, double latitude, double longitude, int upvotes, boolean verified, String url, String mobNumber, ArrayList<String> upvoters)
+	public Garbage(String description, boolean severe, boolean organic, double latitude, double longitude, int upvotes, String name, String url, String mobNumber, ArrayList<String> upvoters)
 	{
 		if(description.trim().equals("")){
 			description = "No Name";
@@ -29,7 +29,7 @@ public class Garbage {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.upvotes = upvotes;
-		this.verified = verified;
+		this.name = name;
 		this.url = url;
 		this.mobNumber = mobNumber;
 		this.upvoters = upvoters;
@@ -84,8 +84,8 @@ public class Garbage {
 		this.mobNumber = mobNumber;
 	}
 
-	public boolean getVerified() {
-		return verified;
+	public String getName() {
+		return name;
 	}
 
 	public void setDescription(String name){
@@ -112,7 +112,7 @@ public class Garbage {
 		this.upvotes = upvotes;
 	}
 
-	public void setVerified(boolean verified) {
-		this.verified = verified;
+	public void setName(String name) {
+		this.name = name;
 	}
 }
