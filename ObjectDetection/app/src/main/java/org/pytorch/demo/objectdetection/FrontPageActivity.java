@@ -27,6 +27,7 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
     public Button button_location;
     public Button button_analysis;
     public Button button_about;
+    public Button button_report;
     LocationManager locationManager;
 
     @Override
@@ -58,7 +59,6 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
 
 
 
-
         //analysis button code
         button_analysis = (Button) findViewById(R.id.button_analysis);
 //        textView_location = findViewById(R.id.text_location);
@@ -79,7 +79,27 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
                 openAboutus();
             }
         });
+
+
+        //report authority
+
+        button_report = (Button) findViewById(R.id.button_report);
+
+
+        button_report.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openReportActivity();
+            }
+        });
     }
+
+    private void openReportActivity() {
+        Intent intent = new Intent(FrontPageActivity.this, MapsSelectLocation.class);
+        intent.putExtra("MOB_NUMBER","454545444");
+        startActivity(intent);
+    }
+
     //aboutus
     public void openAboutus(){
         Intent intent = new Intent(FrontPageActivity.this, aboutus.class);
