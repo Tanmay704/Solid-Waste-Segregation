@@ -50,6 +50,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ReportPopUp"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".MapsSelectLocation"
           />
         <activity

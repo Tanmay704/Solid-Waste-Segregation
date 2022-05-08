@@ -89,16 +89,20 @@ public class FrontPageActivity extends AppCompatActivity implements LocationList
         button_report.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openReportActivity();
+                openReportPopUp();
             }
         });
     }
 
-    private void openReportActivity() {
+    private void openReportPopUp(){
+        Intent intent = new Intent(FrontPageActivity.this, ReportPopUp.class);
+        startActivity(intent);
+    }
+    /*private void openReportActivity() {
         Intent intent = new Intent(FrontPageActivity.this, MapsSelectLocation.class);
         intent.putExtra("MOB_NUMBER","2525");
         startActivity(intent);
-    }
+    }*/
 
     //aboutus
     public void openAboutus(){

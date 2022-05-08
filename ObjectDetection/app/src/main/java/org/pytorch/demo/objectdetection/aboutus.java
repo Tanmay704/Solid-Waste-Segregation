@@ -24,9 +24,10 @@ public class aboutus extends AppCompatActivity {
 
 
         Element adsElement = new Element();
+
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription(" Add descrition about your app")
+                .setDescription("Solid Waste Management")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
                 .addEmail("Your mail id ")
