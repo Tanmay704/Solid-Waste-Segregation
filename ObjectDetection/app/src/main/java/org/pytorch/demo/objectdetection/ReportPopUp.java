@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ReportPopUp extends AppCompatActivity{
 
     public String name;
-    public int mobileNumber;
+    public String mobileNumber;
 
     EditText nameInput;
 
@@ -42,7 +42,7 @@ public class ReportPopUp extends AppCompatActivity{
                 }else{
                 name = nameInput.getText().toString();
 
-                mobileNumber = Integer.parseInt(mobileNumberInput.getText().toString());
+                mobileNumber = mobileNumberInput.getText().toString();
 
                 openReportActivity(name, String.valueOf(mobileNumber));}
             } catch(Exception e){

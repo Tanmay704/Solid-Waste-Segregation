@@ -142,11 +142,11 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 //    if(addresses.get(0).getSubLocality() == null)
                 //      locality = addresses.get(0).getLocality().trim() +',' + addresses.get(0).getAdminArea().trim();
                 //    else locality = addresses.get(0).getSubLocality().trim() +',' + addresses.get(0).getLocality().trim();
-                String[] add = addresses.get(0).getAddressLine(0).trim().split(",");
+                String[] add = addresses.get(0).getAddressLine(0).trim().split("[,.]");
                 locality = "";
                 
                 for(int i = 1; i < add.length - 1; i++){
-                    if(add[i].trim() != null) locality += add[i];
+                    if(!add[i].trim().trim().isEmpty()) locality += add[i];
                 }
 
                 garbageLocality.check_locality(locality,formattedDate);
