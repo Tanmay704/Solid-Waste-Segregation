@@ -27,14 +27,14 @@ public class aboutus extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription("Solid Waste Management")
+                .setDescription("Solid Waste Management App")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
                 .addEmail("Your mail id ")
                 .addWebsite("Your website/")
-                .addYoutube("UCbekhhidkzkGryM7mi5Ys_w")   //Enter your youtube link here (replace with my channel link)
+                .addYoutube("https://www.youtube.com")   //Enter your youtube link here (replace with my channel link)
                 .addPlayStore("com.example.yourprojectname")   //Replace all this with your package name
-                .addInstagram("jarves.usaram")    //Your instagram id
+                .addInstagram("waste_view")    //Your instagram id
                 .addItem(createCopyright())
                 .create();
         setContentView(aboutPage);
